@@ -1,1 +1,172 @@
-<p>medicamentos works!</p>
+<app-navbar></app-navbar>
+<div class="Titulos">
+    <span></span>
+    <h3>Medicamentos</h3>
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#modalAgregar">Agregar Medicamento</button>
+</div>
+<section class="mt-5">
+    <!-----Titulo-->
+    <div class="display">
+        <!---Contenedores de Blog-->
+        <div class="contenedores">
+            <!--Caja Uno-->
+            <div class="CajaDeInfo">
+                <!--Imagen de Apartado-->
+                <div class="ImagenInfo">
+
+                </div>
+                <!--Texto-->
+                <div class="textInfo">
+                    <a href="#" class="TituloInfo">Amoxicisicilina</a>
+                    <p>500MG <br>
+                       Utilizar en caso de infeccion bacteriana <br>
+                        <br>
+                       Dosis: <br>  <br>
+                        Tomar una pastilla cada 8 horas
+                    </p>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Editar">Editar</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Eliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+        <!---Contenedores de Blog2-->
+        <div class="contenedores">
+            <!--Caja Uno-->
+            <div class="CajaDeInfo">
+                <!--Imagen de Apartado-->
+                <div class="ImagenInfo">
+
+                </div>
+                <!--Texto-->
+                <div class="textInfo">
+                    <a href="#" class="TituloInfo">Ibuprofen</a>
+                    <p>500MG <br>
+                        Utilizar en caso de infeccion bacteriana <br>
+                         <br>
+                        Dosis: <br>  <br>
+                         Tomar una pastilla cada 8 horas
+                     </p>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Editar">Editar</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Eliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+        <!---Contenedores de Blog3-->
+        <div class="contenedores">
+            <!--Caja Uno-->
+            <div class="CajaDeInfo">
+                <!--Imagen de Apartado-->
+                <div class="ImagenInfo">
+
+                </div>
+                <!--Texto-->
+                <div class="textInfo">
+                    <a href="#" class="TituloInfo">Panadol</a>
+                    <p>500MG <br>
+                        Utilizar en caso de infeccion bacteriana <br>
+                         <br>
+                        Dosis: <br>  <br>
+                         Tomar una pastilla cada 8 horas
+                     </p>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Editar">Editar</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Eliminar">Eliminar</button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</section>
+
+
+<!---Modals-->
+
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAgregar"> Agregar Medicamento </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="Centrado">
+                    <span>Nombre del Medicamento: </span>
+                    <input class="ms-2" type="text">
+                    
+                </div>
+                <div class="Centrado">
+                    <span>Información del Medicamento: </span>
+                    <input class="ms-2" type="text">
+                    
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="Editar" tabindex="-1" aria-labelledby="Editar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Editar"> Editar Medicamento </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="Centrado">
+                    <span>Nombre de Medicamento: </span>
+                    <input class="ms-2" type="text">
+                    
+                </div>
+                <div class="Centrado">
+                    <span>Información del medicamento: </span>
+                    <input class="ms-2" type="text">
+                    
+                </div>          
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="Eliminar" tabindex="-1" aria-labelledby="Eliminar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Eliminar"> Eliminar Medicamento </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="Centrado">
+                    <span>¿Esta de acuerdo con eliminar el siguiente medicamento?</span>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
