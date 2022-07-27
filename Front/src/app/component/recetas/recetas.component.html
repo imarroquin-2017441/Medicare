@@ -9,7 +9,7 @@
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <div class="contenedores">
+        <div *ngFor="let rec of recetas" class="contenedores">
             <!--Caja Uno-->
             <div class="CajaDeInfo">
                 <!--Imagen de Apartado-->
@@ -23,87 +23,20 @@
                             <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
                           </svg>
                     </button>
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
+                    <p>like:{{rec.like}}</p>
+                    <a href="#" class="TituloInfo">{{rec.name}}</a>
    
-
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    <h5>Ingredientes: {{rec.ingredients}}</h5>
+                    <h5>Descripción: {{rec.description}}</h5>
+                    <h5>Preparación: {{rec.preparation}}</h5>
+                    <button *ngIf="role == 'ADMIN'" (click)="getPrescriptionId(rec._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Eliminar">Eliminar</button>
+                        <button *ngIf="role == 'ADMIN'" (click)="deletePrescription(rec._id)" type="button" class="btn btn-dark"
+                        >Eliminar</button>
                         
                 </div>
             </div>
         </div>
-        <!---Contenedores de Blog2-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <button class="boton" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                            <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                          </svg>
-                    </button>
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
-                    
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Eliminar">Eliminar</button>
-                </div>
-            </div>
-        </div>
-        <!---Contenedores de Blog3-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <button class="boton" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                            <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                          </svg>
-                    </button>
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Eliminar">Eliminar</button>
-                </div>
-            </div>
-
-
-        </div>
-
-
-
     </div>
 </section>
 
@@ -151,36 +84,38 @@
 
 <div class="modal fade" id="Editar" tabindex="-1" aria-labelledby="Editar" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Editar"> Editar Receta </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>Nombre de Planta: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Información para que sirve: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Indicación para uso: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-dark">Guardar</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="Editar">Editar receta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <form *ngIf="recetas"  >
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input [(ngModel)]="this.receUpdate.name" name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <input [(ngModel)]="this.receUpdate.description" name="description" type="text" class="form-control" id="description">
+            </div>
+            <div class="mb-3">
+                <label for="ingredients" class="form-label">Ingredientes</label>
+                <input [(ngModel)]="this.receUpdate.ingredients" name="ingredients" type="text" class="form-control" id="ingredients">
+              </div>
+            <div class="mb-3">
+              <label for="preparation" class="form-label">Preparación</label>
+              <input [(ngModel)]="this.receUpdate.preparation" name="preparation" type="text" class="form-control" id="preparation">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="updatePrescription()"  data-bs-dismiss="modal" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 
 <div class="modal fade" id="Eliminar" tabindex="-1" aria-labelledby="Eliminar" aria-hidden="true">

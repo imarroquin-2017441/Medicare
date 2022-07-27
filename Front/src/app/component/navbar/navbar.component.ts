@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/userRest/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  role: String = '';
+  token: String ='';
 
-  constructor() { }
+  constructor(
+    public userRest: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.role = this.userRest.getIdentity().role;
+    this.token = this.userRest.getToken();
   }
-
+  logOut(){
+    localStorage.clear();
+  }
 }

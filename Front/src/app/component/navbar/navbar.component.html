@@ -9,7 +9,7 @@
           <li class="nav-item" style=" border-radius: 50%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/home" style="color: white;">Home</a>
           </li>
-          <li class="nav-item" style=" border-radius: 40%; padding: 3px;">
+          <li  class="nav-item" style=" border-radius: 40%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/recetas" style="color: white;">Recetas</a>
           </li>
           <li class="nav-item" style=" border-radius: 40%; padding: 3px;">
@@ -19,15 +19,15 @@
             <a  class="btn btn-danger" aria-current="page" routerLink="/mis-recetas" style="color: white;">Mis Recetas</a>
           </li>
           <li class="nav-item" style=" border-radius: 40%;">
-            <a routerLink="/" class="btn btn-danger" aria-current="page" style="color: white;">Cerrar Sesion</a>
+            <a *ngIf="token" (click)="logOut()" routerLink="/login" class="btn btn-danger" aria-current="page" style="color: white;">Cerrar Sesion</a>
           </li>
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-bottom: 2px; align-items: center; "> 
           <li class="nav-item" style="border-radius: 40%;">
-            <a class="btn btn-danger" aria-current="page" routerLink="/" style="color: white;">Login</a>
+            <a *ngIf="!token" class="btn btn-danger" aria-current="page" routerLink="/login" style="color: white;">Login</a>
           </li>
           <li class="nav-item" style="border-radius: 40%;">
-            <a class="btn btn-danger"  aria-current="page" routerLink="/" style="color: white;">Register</a>
+            <a *ngIf="!token" class="btn btn-danger"  aria-current="page" routerLink="/register" style="color: white;">Register</a>
           </li>
         </ul>
         <form class="d-flex" role="search">

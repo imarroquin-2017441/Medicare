@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/userRest/user.service';
 
 @Component({
   selector: 'app-mis-recetas',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MisRecetasComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+  ) {
+   }
 
   ngOnInit(): void {
   }
+  
 
 }

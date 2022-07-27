@@ -59,7 +59,7 @@ exports.getPrescriptions = async(req, res)=>{
         const getPres = await Pres.find()
         .sort({like: -1})
         .lean()
-        return res.send({Recetas: getPres});
+        return res.send({getPres});
 
     }catch(err){
         console.log(err);
