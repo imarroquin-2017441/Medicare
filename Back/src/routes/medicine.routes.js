@@ -6,7 +6,7 @@ const api = express.Router();
 const mdAuth = require('../services/authenticated');
 
 api.get('/pruebaMedicine', medicineController.prueba);
-api.post('/saveMedicine', [mdAuth.ensureAuth, mdAuth.isAdmin], medicineController.addMedicine);
+api.post('/addMedicine', [mdAuth.ensureAuth, mdAuth.isAdmin], medicineController.addMedicine);
 api.put('/updateMedicine/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], medicineController.updateMedicine);
 api.delete('/deleteMedicine/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], medicineController.deleteMedicine);
 

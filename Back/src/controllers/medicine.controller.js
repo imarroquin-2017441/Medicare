@@ -43,8 +43,8 @@ exports.updateMedicine = async(req, res)=>{
 
         const medicineExist = await Medi.findOne({_id: mediId});
         if(!medicineExist) return res.status(400).send({message: 'Medicina no encontrada'});
-        const validateUpdate = await checkUpdateMedicine(params);
-        if(validateUpdate === false) return res.status(400).send({message: 'No se pueden actualizar esa informacion o params invalidos'});
+        /*const validateUpdate = await checkUpdateMedicine(params);
+        if(validateUpdate === false) return res.status(400).send({message: 'No se pueden actualizar esa informacion o params invalidos'});*/
         let alreadyName = await alreadyMedicine(params.name);
         if(alreadyName && medicineExist.name != params.name) return res.status(400).send({message: 'Nombre de medicina ya en uso, utilice otro'});
         const mediUpdate = await Medi.findOneAndUpdate({_id: mediId}, params, {new: true});

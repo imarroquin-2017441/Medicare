@@ -5,11 +5,11 @@
     <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#modalAgregar">Agregar Medicamento</button>
 </div>
-<section class="mt-5">
+<section class="mt-5" >
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <div class="contenedores">
+        <div class="contenedores" *ngFor="let medicine of medicines">
             <!--Caja Uno-->
             <div class="CajaDeInfo">
                 <!--Imagen de Apartado-->
@@ -18,73 +18,23 @@
                 </div>
                 <!--Texto-->
                 <div class="textInfo">
-                    <a href="#" class="TituloInfo">Amoxicisicilina</a>
-                    <p>500MG <br>
-                       Utilizar en caso de infeccion bacteriana <br>
+                    <a href="#" class="TituloInfo">{{medicine.name}}</a>
+                    <p>Descripción<br>
+                        {{medicine.description}} <br>
                         <br>
-                       Dosis: <br>  <br>
-                        Tomar una pastilla cada 8 horas
+                       Lugar de venta: <br> 
+                       {{medicine.salesPlace}} <br> <br>
+                        Precio: Q
+                        {{medicine.averagePrice}}
                     </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    <button (click)="getMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        <button (click)="deleteMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#Eliminar">Eliminar</button>
                 </div>
             </div>
         </div>
-        <!---Contenedores de Blog2-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <a href="#" class="TituloInfo">Ibuprofen</a>
-                    <p>500MG <br>
-                        Utilizar en caso de infeccion bacteriana <br>
-                         <br>
-                        Dosis: <br>  <br>
-                         Tomar una pastilla cada 8 horas
-                     </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Eliminar">Eliminar</button>
-                </div>
-            </div>
-        </div>
-        <!---Contenedores de Blog3-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <a href="#" class="TituloInfo">Panadol</a>
-                    <p>500MG <br>
-                        Utilizar en caso de infeccion bacteriana <br>
-                         <br>
-                        Dosis: <br>  <br>
-                         Tomar una pastilla cada 8 horas
-                     </p>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Editar">Editar</button>
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#Eliminar">Eliminar</button>
-                </div>
-            </div>
-
-
-        </div>
-
-
-
+    
     </div>
 </section>
 
@@ -99,22 +49,35 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form #addMedicineForm="ngForm">
                 <div class="Centrado">
                     <span>Nombre del Medicamento: </span>
-                    <input class="ms-2" type="text">
+                    <input [(ngModel)]="medicine.name" name="name" id="name" class="ms-2" type="text">
                     
                 </div>
                 <div class="Centrado">
                     <span>Información del Medicamento: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
+                    <input [(ngModel)]="medicine.description" name="description" id="description" class="ms-2" type="text">
                 
+                </div>
+                <div class="Centrado">
+                    <span>Lugar de Venta: </span>
+                    <input [(ngModel)]="medicine.salesPlace" name="salesPlace" id="salesPlace" class="ms-2" type="text">
+                
+                </div>
+                <div class="Centrado">
+                    <span>Rango de precio: </span>
+                    <input [(ngModel)]="medicine.averagePrice" name="averagePrice" id="averagePrice" class="ms-2" type="number">
+                
+                </div>
+
+                </form>
                 
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-dark">Guardar</button>
+                <button (click)="addMedicine(addMedicineForm)" data-bs-toggle="modal" type="button" class="btn btn-dark">Guardar</button>
             </div>
         </div>
     </div>
@@ -130,43 +93,35 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="Centrado">
-                    <span>Nombre de Medicamento: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Información del medicamento: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>          
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-dark">Guardar</button>
-            </div>
-        </div>
+                
+                <form *ngIf="mediUpdate">
+                    <div class="form-group">
+                      <label for="name">Nombre</label>
+                      <input [(ngModel)]="mediUpdate.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Descripción</label>
+                      <input [(ngModel)]="mediUpdate.description" name="description" type="text" class="form-control" id="description" placeholder="Descripción">
+                    </div>
+                    <div class="form-group">
+                        <label for="salesPlace">Lugar de venta:</label>
+                        <input [(ngModel)]="mediUpdate.salesPlace" name="salesPlace" type="text" class="form-control" id="salesPlace" placeholder="Lugar">
+                      </div>
+                      <div class="form-group">
+                        <label for="averagePrice">Rango de Precio:</label>
+                        <input [(ngModel)]="mediUpdate.averagePrice" name="averagePrice" type="number" class="form-control" id="averagePrice" placeholder="Precio">
+                      </div>
+                    <div class="form-group">
+                      <div class="multi-buttonA" >
+                        <button (click)="updateMedicine()" class="btn btn-success m-3 "
+                        data-bs-toggle="modal" >Actualizar</button>
+                      </div>
+                    </div>
+                  </form>
+
+            </div> 
+            
+        </div>  
     </div>
 </div>
 
-
-<div class="modal fade" id="Eliminar" tabindex="-1" aria-labelledby="Eliminar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Eliminar"> Eliminar Medicamento </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>¿Esta de acuerdo con eliminar el siguiente medicamento?</span>
-                    
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-dark">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
