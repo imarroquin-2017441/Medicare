@@ -74,10 +74,10 @@ exports.checkUpdate = async (user)=>{
     }
 }
 
-exports.checkUpdatePrescri = async(prescriptions)=>{
-    if(prescriptions.user ||
-        prescriptions.like ||
-        Object.entries(prescriptions).length === 0){
+exports.checkUpdatePrescri = async(prescription)=>{
+    if(prescription.user ||
+        prescription.like ||
+        Object.entries(prescription).length === 0){
         return false;
     }else{
         return true;

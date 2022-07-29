@@ -45,39 +45,48 @@
 
 
 
+<!---Modals-->
 
-<!-- Modal -->
 <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalAgregar"> Agregar Receta </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>Nombre de Planta: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Información para que sirve: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Indicación para uso: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-dark">Guardar</button>
-            </div>
-        </div>
-    </div>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalAgregar"> Agregar Medicamento </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form #addReceForm="ngForm">
+              <div class="Centrado">
+                  <span>Nombre de la Receta: </span>
+                  <input [(ngModel)]="recetasM.name" name="name" id="name" class="ms-2" type="text">
+                  
+              </div>
+              <div class="Centrado">
+                  <span>Información del Medicamento: </span>
+                  <input [(ngModel)]="recetasM.description" name="description" id="description" class="ms-2" type="text">
+              
+              </div>
+              <div class="Centrado">
+                  <span>Ingredientes: </span>
+                  <input [(ngModel)]="recetasM.ingredients" name="ingredients" id="ingredients" class="ms-2" type="text">
+              
+              </div>
+              <div class="Centrado">
+                  <span>Preparación </span>
+                  <input [(ngModel)]="recetasM.preparation" name="preparation" id="preparation" class="ms-2" type="text">
+              
+              </div>
+
+              </form>
+              
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button (click)="addReceta(addReceForm)" data-bs-toggle="modal" type="button" class="btn btn-dark">Guardar</button>
+          </div>
+      </div>
+  </div>
 </div>
 
 

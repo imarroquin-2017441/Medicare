@@ -100,7 +100,6 @@ exports.getPrescriptionsByUser = async(req, res)=>{
 
         const userLog = req.user.sub;
         const prescriptions = await Pres.find({user: userLog})
-        if(prescriptions == '') return res.status(400).send({message: 'El usuario no cuenta con recetas agregadas'});
         return res.send({message: 'Tus recetas son: ', prescriptions});
 
     }catch(err){
@@ -118,7 +117,7 @@ exports.updatePrescriptions = async(req, res)=>{
         const params = req.body;
 
         const checkUpdate = await checkUpdatePrescri(params);
-        if(checkUpdate === false) return res.status(400).send({message: 'No han sido enviado los params para actualizar o no se pueden actualizaro hasn sido enviado los params para actualizar o no se pueden actualizar'});
+        if(checkUpdate === true) return res.status(400).send({message: 'No han sido enviado los params para actualizar o no se pueden actualizar'});
         const presExist = await Pres.findOne({_id: prescriId});
         if(!presExist) return res.status(400).send({message: 'Receta no encontrada'});
         const permission = await checkPermission(presExist.user, userLog);

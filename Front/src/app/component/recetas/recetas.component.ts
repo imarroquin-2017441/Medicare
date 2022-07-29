@@ -52,6 +52,29 @@ export class RecetasComponent implements OnInit {
       }
     });
   }
+
+  addReceta(addReceForm:any){
+    this.receRest.addPresciption(this.recetasM).subscribe({
+      next:(res:any)=>{
+        Swal.fire({
+          title: res.message ,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+        this.getAllPrescriptions()
+        addReceForm.reset()
+      },
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    })
+  };
+
   updatePrescription(){
     this.receRest.updatePrescription(this.receUpdate._id, this.receUpdate).subscribe({
       next: (res:any)=>{alert(res.message);

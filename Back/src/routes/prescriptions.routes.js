@@ -12,7 +12,7 @@ api.get('/getAllPrescriptions', mdAuth.ensureAuth, prescriController.getPrescrip
 api.get('/getPrescription/:id', mdAuth.ensureAuth, prescriController.getPrescription);
 api.get('/getPrescriptionsByUser', mdAuth.ensureAuth, prescriController.getPrescriptionsByUser);
 
-api.put('/updatePrescription/:id', mdAuth.ensureAuth, prescriController.updatePrescriptions);
+api.put('/updatePrescriptions/:id', mdAuth.ensureAuth, prescriController.updatePrescriptions);
 api.delete('/deletePrescription/:id', mdAuth.ensureAuth, prescriController.deletePrescriptions);
 
 api.put('/updatePrescriptionByAdmin/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], prescriController.updatePrescriptionsByAdmin);

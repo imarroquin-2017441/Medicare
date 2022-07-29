@@ -1,154 +1,80 @@
 <app-navbar></app-navbar>
-
 <div class="Titulos">
     <span></span>
-    <h3>Mis Recetas</h3>
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-    data-bs-target="#modalAgregar">Agregar Receta</button>
-    
+    <h3>Recetas</h3>
 </div>
-<section class="mt-5">
+<section class="mt-5" >
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <table class="table table-bordered table-dark">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Nombre de la Receta</th>
-                <th scope="col">Información</th>
-                <th scope="col">Indicación</th>
-                <th scope="col">Modicar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Té Hierba Bueno </td>
-                <td>Ayuda a la mejor digestion</td>
-                <td>Tomar antes de dormir</td>
-                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Editar">Editar</button>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Eliminar">Eliminar</button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Té Hierba Bueno </td>
-                <td>Ayuda a la mejor digestion</td>
-                <td>Tomar antes de dormir</td>
-                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Editar">Editar</button>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Eliminar">Eliminar</button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Té Hierba Bueno </td>
-                <td>Ayuda a la mejor digestion</td>
-                <td>Tomar antes de dormir</td>
-                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Editar">Editar</button>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#Eliminar">Eliminar</button></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="contenedores" *ngFor="let receta of recetas">
+            <!--Caja Uno-->
+            <div class="CajaDeInfo">
+                <!--Imagen de Apartado-->
+                <div class="ImagenInfo">
 
-
+                </div>
+                <!--Texto-->
+                <div class="textInfo">
+                    <a class="TituloInfo">{{receta.name}}</a>
+                    <p>Descripción<br>
+                        {{receta.description}} <br>
+                        <br>
+                       Ingredientes: <br> 
+                       {{receta.ingredients}} <br> <br>
+                        Preparación: 
+                        {{receta.preparation}}
+                    </p>
+                    <button (click)="getReceta(receta._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Editar">Editar</button>
+                        <button (click)="deleteReceta(receta._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#Eliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    
     </div>
 </section>
 
 
-<!-- Modal -->
-
-
-<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalAgregar"> Agregar Receta </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>Nombre de Planta: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Información para que sirve: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Indicación para uso: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <div class="modal fade" id="Editar" tabindex="-1" aria-labelledby="Editar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Editar"> Editar Receta </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>Nombre de Planta: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Información para que sirve: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                <div class="Centrado">
-                    <span>Indicación para uso: </span>
-                    <input class="ms-2" type="text">
-                    
-                </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="Editar"> Editar Receta </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              
+              <form *ngIf="recetasUpdate">
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input [(ngModel)]="recetasUpdate.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <input [(ngModel)]="recetasUpdate.description" name="description" type="text" class="form-control" id="description" placeholder="Descripción">
+                  </div>
+                  <div class="form-group">
+                      <label for="ingredients">Ingredientes</label>
+                      <input [(ngModel)]="recetasUpdate.ingredients" name="ingredients" type="text" class="form-control" id="ingredients" placeholder="Ingredientes">
+                    </div>
+                    <div class="form-group">
+                      <label for="preparation">Preparación</label>
+                      <input [(ngModel)]="recetasUpdate.preparation" name="preparation" type="text" class="form-control" id="preparation" placeholder="Preparación">
+                    </div>
+                  <div class="form-group">
+                    <div class="multi-buttonA" >
+                      <button (click)="updateReceta()" class="btn btn-success m-3 "
+                      data-bs-toggle="modal" >Actualizar</button>
+                    </div>
+                  </div>
+                </form>
 
-
-<div class="modal fade" id="Eliminar" tabindex="-1" aria-labelledby="Eliminar" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Eliminar"> Eliminar Receta </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="Centrado">
-                    <span>¿Esta de acuerdo con eliminar la siguiente receta?</span>
-                    
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Eliminar</button>
-            </div>
-        </div>
-    </div>
+          </div> 
+          
+      </div>  
+  </div>
 </div>

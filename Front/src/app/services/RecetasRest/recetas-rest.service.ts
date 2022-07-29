@@ -22,6 +22,10 @@ export class RecetasRestService {
   getPrescriptionId(id:string){
     return this.http.get(environment.baseUrl + 'prescription/getPrescription/'+ id, {headers: this.httpOptions});
   }
+
+  addPresciption(params: {}){
+    return this.http.post(environment.baseUrl + 'prescription/addPrescription', params, {headers:this.httpOptions});
+  };
   deletePrescription(id:string){
     return this.http.delete(environment.baseUrl + 'prescription/deletePrescriptionByAdmin/' + id, {headers:this.httpOptions});
   }

@@ -15,5 +15,20 @@ export class MisRecetasRestService {
     private userRest: UserService,
     private http: HttpClient
   ) { }
+
+  getMyPrescriptions(){
+    return this.http.get(environment.baseUrl + 'prescription/getPrescriptionsByUser',{headers:this.httpOptions});
+  };
+
+  getMyPrescription(id: string){
+    return this.http.get(environment.baseUrl + 'prescription/getPrescription/' + id, {headers:this.httpOptions});
+  };
   
+  updateMyPrescription(id:string, params:{}){
+    return this.http.put(environment.baseUrl + 'prescription/updatePrescriptions/' + id, params,  {headers: this.httpOptions});
+   };
+  
+   deleteMyPresciption(id: string){
+    return this.http.delete(environment.baseUrl + 'prescription/deletePrescription/' + id, {headers: this.httpOptions});
+   };
 }
