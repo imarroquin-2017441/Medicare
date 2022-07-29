@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/userRest/user.service';
 import { RecetasModel } from 'src/app/model/recetas/recetas.model';
 import { RecetasRestService } from 'src/app/services/RecetasRest/recetas-rest.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recetas',
@@ -27,6 +28,7 @@ export class RecetasComponent implements OnInit {
     this.getAllPrescriptions();
     this.role = this.userRest.getIdentity().role;
   }
+
   getAllPrescriptions(){
     this.receRest.getAllPrescriptions().subscribe({
       next:(res:any)=>{
@@ -66,5 +68,21 @@ export class RecetasComponent implements OnInit {
       error: (err)=> alert(err.error.message || err.error)
     })
   }
+
+  addLike(id: string){
+    this.receRest.addLike(id).subscribe({
+      next:(res:any)=>{
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+        this.getAllPrescriptions();
+      },
+       error:(err)=> alert(err.error.message || err.error)
+    })
+  };
 
 }

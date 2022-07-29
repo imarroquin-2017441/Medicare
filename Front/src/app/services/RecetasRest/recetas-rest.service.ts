@@ -28,4 +28,8 @@ export class RecetasRestService {
   updatePrescription(id:string, params:{}){
     return this.http.put(environment.baseUrl + 'prescription/updatePrescriptionByAdmin/'+id,params,{headers:this.httpOptions});
   }
+  addLike(id: string){
+    return this.http.delete(environment.baseUrl + 'prescription/addLike/' + id, {headers:this.httpOptions});
+   }
+
 }

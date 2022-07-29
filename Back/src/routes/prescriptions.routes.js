@@ -6,8 +6,8 @@ const api = express.Router();
 const mdAuth = require('../services/authenticated');
 
 api.get('/pruebaPrescri', prescriController.prueba);
-api.post('/savePrescription', mdAuth.ensureAuth, prescriController.addPrescription);
-api.put('/addLike/:id', mdAuth.ensureAuth, prescriController.addLike);
+api.post('/addPrescription', mdAuth.ensureAuth,prescriController.addPrescription);
+api.delete('/addLike/:id', mdAuth.ensureAuth,prescriController.addLike);
 api.get('/getAllPrescriptions', mdAuth.ensureAuth, prescriController.getPrescriptions);
 api.get('/getPrescription/:id', mdAuth.ensureAuth, prescriController.getPrescription);
 api.get('/getPrescriptionsByUser', mdAuth.ensureAuth, prescriController.getPrescriptionsByUser);

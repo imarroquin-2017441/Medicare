@@ -3,6 +3,7 @@
 const Pres = require('../models/prescriptions.model');
 const { validateData, alreadyUser, checkUpdatePrescri, checkPermission } = require('../utils/validate');
 const User = require('../models/user.model');
+const Already = require('../models/already.model');
 
 exports.prueba = async (req, res)=>{
     await res.send({message: 'Simon, si sirve'});
@@ -38,14 +39,28 @@ exports.addLike = async(req, res)=>{
     try{
 
         const presId = req.params.id;
+        const userLog = req.user.sub;
+        console.log(userLog);
         const presExist = await Pres.findOne({_id: presId})
         if(!presExist) return res.status(400).send({message: 'Error dando like'});
-        const suma = {
-            like: presExist.like + 1
+        const alreadyLike = await Already.findOne({user: userLog, prescription: presId});
+        if(!alreadyLike) {
+            const data = {
+                user: userLog,
+                prescription: presId
+            }
+
+            const alreLike = new Already(data);
+            await alreLike.save();
+
+            const suma = {
+                like: presExist.like + 1
+            }
+            const presUpdated = await Pres.findOneAndUpdate({_id: presId}, suma, {new: true});
+            if(!presUpdated) return res.status(400).send({message: 'Error dando like'});
+            return res.send({message: 'Like completado'});
         }
-        const presUpdated = await Pres.findOneAndUpdate({_id: presId}, suma, {new: true});
-        if(!presUpdated) return res.status(400).send({message: 'Error dando like'});
-        return res.send({message: 'Like completado'});
+        if(alreadyLike) return res.status(400).send({message: 'Este usuario ya realizo like a esta receta'})
 
     }catch(err){
         console.log(err);
