@@ -77,18 +77,45 @@ export class RecetasComponent implements OnInit {
 
   updatePrescription(){
     this.receRest.updatePrescription(this.receUpdate._id, this.receUpdate).subscribe({
-      next: (res:any)=>{alert(res.message);
+      next: (res:any)=>{
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
         this.getAllPrescriptions();
       },
-      error: (err)=> alert(err.error.message || err.error)
+      error:(err)=>{
+        Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    }
     });
   }
   deletePrescription(idRece:any){
     this.receRest.deletePrescription(idRece).subscribe({
-      next: (res:any)=>{alert(res.message);
+      next: (res:any)=>{Swal.fire({
+        title: res.message,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2000,
+        position:'center'
+      })
         this.getAllPrescriptions();
       },
-      error: (err)=> alert(err.error.message || err.error)
+      error:(err)=>{
+        Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    }
     })
   }
 
@@ -104,7 +131,14 @@ export class RecetasComponent implements OnInit {
         })
         this.getAllPrescriptions();
       },
-       error:(err)=> alert(err.error.message || err.error)
+      error:(err)=>{
+        Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    }
     })
   };
 

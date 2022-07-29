@@ -14,6 +14,7 @@ api.delete('/deleteUser/:id', mdAuth.ensureAuth, userController.delete);
 
 api.get('/getUsers', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.getUsers);
 api.get('/getUser', mdAuth.ensureAuth, userController.getUser);
+api.get('/getUserId/:id', mdAuth.ensureAuth,userController.getUserId);
 
 api.put('/updateUserByAdmin/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.updateUser);
 api.delete('/deleteUserByAdmin/:id', [mdAuth.ensureAuth, mdAuth.isAdmin], userController.deleteUser);

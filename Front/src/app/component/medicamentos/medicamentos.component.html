@@ -2,7 +2,7 @@
 <div class="Titulos">
     <span></span>
     <h3>Medicamentos</h3>
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+    <button *ngIf="role == 'ADMIN'" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#modalAgregar">Agregar Medicamento</button>
 </div>
 <section class="mt-5" >
@@ -18,7 +18,7 @@
                 </div>
                 <!--Texto-->
                 <div class="textInfo">
-                    <a href="#" class="TituloInfo">{{medicine.name}}</a>
+                    <a class="TituloInfo">{{medicine.name}}</a>
                     <p>Descripción<br>
                         {{medicine.description}} <br>
                         <br>
@@ -27,9 +27,9 @@
                         Precio: Q
                         {{medicine.averagePrice}}
                     </p>
-                    <button (click)="getMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    <button *ngIf="role == 'ADMIN'" (click)="getMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#Editar">Editar</button>
-                        <button (click)="deleteMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    <button *ngIf="role == 'ADMIN'" (click)="deleteMedicine(medicine._id)" type="button" class="btn btn-dark" data-bs-toggle="modal"
                         data-bs-target="#Eliminar">Eliminar</button>
                 </div>
             </div>
@@ -50,24 +50,24 @@
             </div>
             <div class="modal-body">
                 <form #addMedicineForm="ngForm">
-                <div class="Centrado">
-                    <span>Nombre del Medicamento: </span>
-                    <input [(ngModel)]="medicine.name" name="name" id="name" class="ms-2" type="text">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre del Medicamento</label>
+                    <input [(ngModel)]="medicine.name" class="form-control" name="name" id="name" class="form-control" type="text">
                     
                 </div>
-                <div class="Centrado">
-                    <span>Información del Medicamento: </span>
-                    <input [(ngModel)]="medicine.description" name="description" id="description" class="ms-2" type="text">
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripcion del Medicamento:</label>
+                    <input [(ngModel)]="medicine.description" class="form-control" name="description" id="description" class="form-control" type="text">
                 
                 </div>
-                <div class="Centrado">
-                    <span>Lugar de Venta: </span>
-                    <input [(ngModel)]="medicine.salesPlace" name="salesPlace" id="salesPlace" class="ms-2" type="text">
+                <div class="mb-3">
+                    <label for="salesPlace" class="form-label">Lugares de venta:</label>
+                    <input [(ngModel)]="medicine.salesPlace" class="form-control" name="salesPlace" id="salesPlace" class="form-control" type="text">
                 
                 </div>
-                <div class="Centrado">
-                    <span>Rango de precio: </span>
-                    <input [(ngModel)]="medicine.averagePrice" name="averagePrice" id="averagePrice" class="ms-2" type="number">
+                <div class="mb-3">
+                    <label for="averagePrice" class="form-label">Precio promedio:</label>
+                    <input [(ngModel)]="medicine.averagePrice" class="form-control" name="averagePrice" id="averagePrice" class="form-control" type="number">
                 
                 </div>
 

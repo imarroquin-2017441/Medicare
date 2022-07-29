@@ -6,20 +6,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul  class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-bottom: 5px; align-items: center; padding-left: 5px;">
-          <li class="nav-item" style=" border-radius: 50%; padding: 3px;">
+          <li *ngIf="!role" class="nav-item" style=" border-radius: 50%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/home" style="color: white;">Home</a>
           </li>
-          <li  class="nav-item" style=" border-radius: 40%; padding: 3px;">
+          <li *ngIf="token" class="nav-item" style=" border-radius: 40%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/recetas" style="color: white;">Recetas</a>
           </li>
-          <li class="nav-item" style=" border-radius: 40%; padding: 3px;">
+          <li *ngIf="token" class="nav-item" style=" border-radius: 40%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/medicamentos" style="color: white;">Medicamentos</a>
           </li>
-          <li class="nav-item" style=" border-radius: 40%; padding: 3px;">
+          <li *ngIf="role == 'CLIENT'" class="nav-item" style=" border-radius: 40%; padding: 3px;">
             <a  class="btn btn-danger" aria-current="page" routerLink="/mis-recetas" style="color: white;">Mis Recetas</a>
           </li>
-          <li class="nav-item" style=" border-radius: 40%;">
-            <a *ngIf="token" (click)="logOut()" routerLink="/login" class="btn btn-danger" aria-current="page" style="color: white;">Cerrar Sesion</a>
+          <li *ngIf="role == 'ADMIN'" class="nav-item" style=" border-radius: 40%; padding: 3px;">
+            <a  class="btn btn-danger" aria-current="page" routerLink="/users" style="color: white;">Administrar Usuarios</a>
+          </li>
+          <li *ngIf="token" class="nav-item" style=" border-radius: 40%;">
+            <a  (click)="logOut()" routerLink="/home" class="btn btn-danger" aria-current="page" style="color: white;">Cerrar Sesion</a>
           </li>
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-bottom: 2px; align-items: center; "> 

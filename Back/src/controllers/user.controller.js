@@ -4,6 +4,7 @@ const User = require('../models/user.model');
 const { validateData, alreadyUser, encrypt, 
     checkPassword, checkPermission, checkUpdate} = require('../utils/validate');
 const jwt = require('../services/jwt');
+const PresCri = require('../models/prescriptions.model');
 
 exports.prueba = async (req, res)=>{
     await res.send({message: 'Simon, si sirve'});
@@ -176,7 +177,7 @@ exports.deleteUser = async(req, res)=>{
         const userExist = await User.findOne({_id: userId});
         if(!userExist) return res.status(400).send({message: 'Usuario no encontrado'});
         if(userExist.role === 'ADMIN') return res.status(400).send({message: 'No se puede eliminar a un usuario con role ADMIN'});
-        await Hotel.deleteMany({user: userId})
+        await PresCri.deleteMany({user: userId})
         const userDeleted = await User.findOneAndDelete({_id: userId});
         if(!userDeleted) return res.status(400).send({message: 'Usuario no eliminado'});
         return res.send({message: 'Usuario eliminado satisfactoriamente'})
@@ -184,5 +185,16 @@ exports.deleteUser = async(req, res)=>{
     }catch(err){
         console.log(err);
         return res.status(500).send({message: 'Error eliminando al usuario'});
+    }
+}
+
+exports.getUserId = async(req, res)=>{
+    try{
+        const userId = req.params.id;
+        const usersA = await User.findOne({_id: userId});
+        return res.send({usersA});
+    }catch(err){
+        console.log(err);
+        return res.status(500).send({err, message: 'Error getting sucu'});
     }
 }

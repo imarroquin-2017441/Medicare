@@ -11,27 +11,33 @@
     
         <!-- Login Form -->
         <form (ngSubmit)="saveUser(register)" #register="ngForm">
-          <span *ngIf="!name.valid && name.touched" class="requiredField">
+          
+          <br><span *ngIf="!name.valid && name.touched" class="fadeIn second" style="color: #0576D5;">
             Required field
-          </span>
-          <input type="text" [(ngModel)]="user.name" id="name" #name="ngModel" class="fadeIn second" name="name" placeholder="Nombre de usuario" required>
-          <span *ngIf="!username.valid && username.touched" class="requiredField">
+          </span><br>
+          <input type="text" [(ngModel)]="user.name" id="name" #name="ngModel"  name="name" placeholder="Nombre de usuario" required>
+          
+          <br><span *ngIf="!username.valid && username.touched" class="fadeIn second" style="color: #0576D5;">
             Required field
-          </span>
-          <input type="text" [(ngModel)]="user.username" id="username" #username="ngModel" class="fadeIn second" name="username" placeholder="Usuario" required>
-          <span *ngIf="!phone.valid && phone.touched" class="requiredField">
+          </span><br>
+          <input type="text" [(ngModel)]="user.username" id="username" #username="ngModel" name="username" placeholder="Usuario" required>
+          
+          <br><span *ngIf="!phone.valid && phone.touched" class="fadeIn second" style="color: #0576D5;">
             Required field
-          </span>
-          <input type="text" [(ngModel)]="user.phone" id="phone" #phone="ngModel" class="fadeIn second" name="phone" placeholder="Numero de usuario" required>
-          <span *ngIf="!email.valid && email.touched" class="requiredField">
+          </span><br>
+          <input type="text" [(ngModel)]="user.phone" id="phone" #phone="ngModel" name="phone" placeholder="Numero de usuario" required>
+          
+          <br><span *ngIf="!email.valid && email.touched" class="fadeIn second" style="color: #0576D5;">
             Required field
-          </span>
-          <input type="text" [(ngModel)]="user.email" id="email" #email="ngModel" class="fadeIn second" name="email" placeholder="Email de usuario" required>
-          <span *ngIf="!password.valid && password.touched" class="requiredField">
+          </span><br>
+          <input type="text" [(ngModel)]="user.email" id="email" #email="ngModel"  name="email" placeholder="Email de usuario" required>
+          
+          <br><span *ngIf="!password.valid && password.touched" class="fadeIn second" style="color: #0576D5;">
             Required field
-          </span>
-          <input type="password" [(ngModel)]="user.password" #password="ngModel" autocomplete="off" id="password"  class="fadeIn third" name="password" placeholder="password" required>
-          <button style="--clr:#6eff3e" type="submit" class="fadeIn fourth"><span>Register</span><i></i></button>
+          </span><br>
+          <input type="password" [(ngModel)]="user.password" #password="ngModel" autocomplete="off" id="password" name="password" placeholder="password" required>
+          
+          <button [disabled]="!register.form.valid" style="--clr:#6eff3e" type="submit" class="fadeIn fourth"><span>Register</span><i></i></button>
           <button style="--clr:#6eff3e" type="submit" class="fadeIn fourth" routerLink="/login"><span>Login</span><i></i></button>
         </form>
       </div>

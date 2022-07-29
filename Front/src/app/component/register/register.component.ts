@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserModel } from 'src/app/model/user/user.model';
 import { UserService } from 'src/app/services/userRest/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -23,12 +24,23 @@ export class RegisterComponent implements OnInit {
   saveUser(register:any){
     this.userRest.getRegisterUser(this.user).subscribe({
       next: (res: any)=>{
-        alert(res.message);
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
         return this.router.navigateByUrl('/login')
       },
       error: (err)=> {
         register.reset();
-        alert(err.error.message || err.error);
+        Swal.fire({
+          title: err.error.message,
+          icon: 'error',
+          timer: 4000,
+          position:'center'
+        })
       }
     })
   }

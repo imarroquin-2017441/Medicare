@@ -1,14 +1,16 @@
 <app-navbar></app-navbar>
 <div class="Titulos">
     <span></span>
-    <h3> Bienvenidos a Medicare</h3>
-    
+    <h3>Bienvenido a Medicare</h3>
+    <p>Estamos aqui para ayudar a su salud :D</p>
+    <h4>Recetas populares</h4>
 </div>
+
 <section class="mt-5">
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <div class="contenedores">
+        <div *ngFor="let rec of recetas" class="contenedores">
             <!--Caja Uno-->
             <div class="CajaDeInfo">
                 <!--Imagen de Apartado-->
@@ -17,70 +19,15 @@
                 </div>
                 <!--Texto-->
                 <div class="textInfo">
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    
+                    <p>Cantidad de like/s: {{rec.like}}</p>
+                    <a class="TituloInfo">Nombre de la Receta: {{rec.name}}</a>
+   
+                    <h5>Ingredientes: {{rec.ingredients}}</h5>
+                    <h5>Descripción: {{rec.description}}</h5>
+                    <h5>Preparación: {{rec.preparation}}</h5>
+                        
                 </div>
             </div>
         </div>
-        <!---Contenedores de Blog2-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
-        <!---Contenedores de Blog3-->
-        <div class="contenedores">
-            <!--Caja Uno-->
-            <div class="CajaDeInfo">
-                <!--Imagen de Apartado-->
-                <div class="ImagenInfo">
-
-                </div>
-                <!--Texto-->
-                <div class="textInfo">
-                    <a href="#" class="TituloInfo">Té de Hierba buena</a>
-                    <p>Ingredientes <br><br>
-                        un té de Hierba Buena y sugerimos agregarle una cucharada de Miel de abeja para mejorar el sabor. <br>
-                        <br>
-                        Ayuda a: <br>  <br>
-                        esto nos ayudara a reducir el estres y relajarnos
-                    </p>
-                    
-                </div>
-            </div>
-
-
-        </div>
-
-
-
     </div>
 </section>
-
-
-
-
-
-
-

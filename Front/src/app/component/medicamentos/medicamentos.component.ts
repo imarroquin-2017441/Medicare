@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicamentosModel } from 'src/app/model/medicamento/medicamentos.model';
 import { MedicamentosRestService } from 'src/app/services/MedicamentosRest/medicamentos-rest.service';
+import { UserService } from 'src/app/services/userRest/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,17 +14,18 @@ export class MedicamentosComponent implements OnInit {
   medicines: any =[] ;
   medicine: MedicamentosModel;
   mediUpdate: any= [];
+  role: String = '';
 
   constructor(
     public medicineRest: MedicamentosRestService,
-  
-
+    public userRest: UserService
   ) {
     this.medicine = new MedicamentosModel('','','','','',0);
    }
 
   ngOnInit(): void {
     this.getMedicines();
+    this.role = this.userRest.getIdentity().role;
   }
 
   getMedicines(){
@@ -49,12 +51,15 @@ export class MedicamentosComponent implements OnInit {
         this.getMedicines()
         addMedicineForm.reset()
       },
-      error:(err)=>Swal.fire({
+      error:(err)=>{
+        Swal.fire({
         title: err.error.message,
         icon: 'error',
         timer: 4000,
         position:'center'
       })
+      addMedicineForm.reset()  
+    }
     })
   };
 
@@ -75,8 +80,16 @@ export class MedicamentosComponent implements OnInit {
           timer: 2000,
           position:'center'
         })
-        this.getMedicines()},
-        error:(err)=> alert(err.error.message || err.error)
+        this.getMedicines()
+      },
+      error:(err)=>{
+        Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    }
     })
   };
 
@@ -92,7 +105,14 @@ export class MedicamentosComponent implements OnInit {
         })
         this.getMedicines();
       },
-       error:(err)=> alert(err.error.message || err.error)
+      error:(err)=>{
+        Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
+    }
     })
   };
 

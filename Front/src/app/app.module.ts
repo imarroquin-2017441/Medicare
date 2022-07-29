@@ -12,6 +12,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { MedicamentosComponent } from './component/medicamentos/medicamentos.component';
 import { RecetasComponent } from './component/recetas/recetas.component';
 import { MisRecetasComponent } from './component/mis-recetas/mis-recetas.component';
+import { UserAdminComponent } from './component/user-admin/user-admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MisRecetasComponent } from './component/mis-recetas/mis-recetas.compone
     RegisterComponent,
     MedicamentosComponent,
     RecetasComponent,
-    MisRecetasComponent
+    MisRecetasComponent,
+    UserAdminComponent
   ],
   imports: [
     BrowserModule,

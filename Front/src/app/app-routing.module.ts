@@ -6,7 +6,7 @@ import { MedicamentosComponent } from './component/medicamentos/medicamentos.com
 import { MisRecetasComponent } from './component/mis-recetas/mis-recetas.component';
 import { RecetasComponent } from './component/recetas/recetas.component';
 import { RegisterComponent } from './component/register/register.component';
-
+import { UserAdminComponent } from './component/user-admin/user-admin.component';
 
 
 
@@ -19,7 +19,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'recetas', component: RecetasComponent},
   {path: 'medicamentos',component: MedicamentosComponent},
-  {path: 'mis-recetas',component: MisRecetasComponent}
+  {path: 'mis-recetas',component: MisRecetasComponent},
+  {path: 'users', component: UserAdminComponent}
 ];
 
 @NgModule({

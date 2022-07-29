@@ -24,6 +24,7 @@ exports.addMedicine = async(req, res)=>{
         if(msg) return res.status(400).send(msg);
         const already = await alreadyMedicine(data.name);
         if(already) return res.status(400).send({message: 'Nombre de medicina ya en uso'});
+        if(params.averagePrice <= 0) return res.status(400).send({message: 'El precio promedio no tiene que ser 0 o menor que 0'})
 
         const medi = new Medi(data);
         await medi.save();
@@ -47,6 +48,7 @@ exports.updateMedicine = async(req, res)=>{
         if(validateUpdate === false) return res.status(400).send({message: 'No se pueden actualizar esa informacion o params invalidos'});*/
         let alreadyName = await alreadyMedicine(params.name);
         if(alreadyName && medicineExist.name != params.name) return res.status(400).send({message: 'Nombre de medicina ya en uso, utilice otro'});
+        if(params.averagePrice <= 0) return res.status(400).send({message: 'El precio promedio no tiene que ser 0 o menor que 0'})
         const mediUpdate = await Medi.findOneAndUpdate({_id: mediId}, params, {new: true});
         if(mediUpdate) return res.send({message: 'Medicina actualizada', mediUpdate});
         return res.status(400).send({message: 'Medicina no actualizada'});
