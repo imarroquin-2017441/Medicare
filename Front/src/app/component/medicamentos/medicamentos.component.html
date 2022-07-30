@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
+
+<input [(ngModel)]="search"  type="search" placeholder="Buscar medicinas" id="Buscador" />
+
 <div class="Titulos">
     <span></span>
     <h3>Medicamentos</h3>
@@ -9,7 +12,7 @@
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <div class="contenedores" *ngFor="let medicine of medicines">
+        <div class="contenedores" *ngFor="let medicine of medicines | searchMedi: search">
             <!--Caja Uno-->
             <div class="CajaDeInfo">
                 <!--Imagen de Apartado-->

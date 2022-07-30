@@ -16,6 +16,7 @@ export class RecetasComponent implements OnInit {
     _id:"",name:"",description:"",ingredients:"",preparation:0
   }
   role: String="";
+  search: any;
 
   constructor(
     private receRest: RecetasRestService,

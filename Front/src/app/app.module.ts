@@ -13,6 +13,8 @@ import { MedicamentosComponent } from './component/medicamentos/medicamentos.com
 import { RecetasComponent } from './component/recetas/recetas.component';
 import { MisRecetasComponent } from './component/mis-recetas/mis-recetas.component';
 import { UserAdminComponent } from './component/user-admin/user-admin.component';
+import { SearchRecePipe } from './pipes/search-rece.pipe';
+import { SearchMediPipe } from './pipes/search-medi.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UserAdminComponent } from './component/user-admin/user-admin.component'
     MedicamentosComponent,
     RecetasComponent,
     MisRecetasComponent,
-    UserAdminComponent
+    UserAdminComponent,
+    SearchRecePipe,
+    SearchMediPipe
   ],
   imports: [
     BrowserModule,

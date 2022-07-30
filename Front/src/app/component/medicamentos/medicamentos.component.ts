@@ -15,6 +15,8 @@ export class MedicamentosComponent implements OnInit {
   medicine: MedicamentosModel;
   mediUpdate: any= [];
   role: String = '';
+  search: any;
+
 
   constructor(
     public medicineRest: MedicamentosRestService,

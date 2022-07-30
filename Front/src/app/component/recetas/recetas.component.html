@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
+
+<input [(ngModel)]="search"  type="search" placeholder="Buscar receta" id="Buscador" />
+
 <div class="Titulos">
     <span></span>
     <h3>Recetas Caseras</h3>
@@ -9,7 +12,7 @@
     <!-----Titulo-->
     <div class="display">
         <!---Contenedores de Blog-->
-        <div *ngFor="let rec of recetas" class="contenedores">
+        <div *ngFor="let rec of recetas | searchRece: search" class="contenedores">
             <!--Caja Uno-->
             <div class="CajaDeInfo">
                 <!--Imagen de Apartado-->
